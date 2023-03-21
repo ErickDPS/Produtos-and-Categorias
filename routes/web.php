@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoriaController;
 
 //------------------- Produto -------------------//
 
-Route::get('/', [ProdutoController::class, 'index'])
+Route::get('/produto', [ProdutoController::class, 'index'])
 ->name('produto.index');
 
 Route::get('/produto/create', [ProdutoController::class, 'create'])

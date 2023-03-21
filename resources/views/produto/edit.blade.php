@@ -8,6 +8,9 @@
     <body>
         {!! Form::open(['url' => 'produto/' . $produto->id , 'method' =>  'put']) !!}
 
+        {!! Form::label('categoria', 'Categoria:') !!}<br>
+        {!! Form::select('categoria_id', $categoria, $produto->categoria->id) !!}<br>
+
         {!! Form::label('nome', 'Nome') !!}<br>
         {!! Form::text('nome', $produto->nome) !!}<br>
 

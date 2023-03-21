@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Categoria;
 
 class ProdutoController extends Controller
 {
@@ -21,7 +22,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        $categoria = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        return view('produto.create', ['categoria' => $categoria]);
     }
 
     /**
@@ -31,12 +33,14 @@ class ProdutoController extends Controller
     {
 
         $validated = $request->validate([
-            'nome'       => 'required|min:5',
-            'quantidade' => 'required|integer',
-            'valor'      => 'required'
+            'categoria_id'       => 'required',
+            'nome'               => 'required|min:5',
+            'quantidade'         => 'required|integer',
+            'valor'              => 'required'
         ]);
 
         $produto = new Produto;
+        $produto-> categoria_id = $request->categoria_id;
         $produto-> nome = $request->nome;
         $produto-> quantidade = $request->quantidade;
         $produto-> valor = $request->valor;
@@ -60,7 +64,8 @@ class ProdutoController extends Controller
     public function edit(string $id)
     {
         $produto = Produto::find($id);
-        return view('produto.edit', ['produto' => $produto]);
+        $categoria = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        return view('produto.edit', ['produto' => $produto, 'categoria' => $categoria]);
     }
 
     /**
@@ -69,12 +74,14 @@ class ProdutoController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
+            'categoria_id'       => 'required',
             'nome'       => 'required|min:5',
             'quantidade' => 'required|integer',
             'valor'      => 'required'
         ]);
 
-        $produto = new Produto;
+        $produto = Produto::find($id);
+        $produto-> categoria_id = $request->categoria_id;
         $produto-> nome = $request->nome;
         $produto-> quantidade = $request->quantidade;
         $produto-> valor = $request->valor;

@@ -12,9 +12,7 @@
     <table class="table table-striped table-dark">
         <tr>
             <th>Nome</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="3">Ação</th>
         </tr>
         @foreach ($categoria as $value)
         <tr>
@@ -33,6 +31,11 @@
             </td>
         </tr>
         @endforeach
+        <tr>
+            <td colspan="4">
+                <a class="btn btn-secondary btn-lg btn-block rounded-0" href="{{ url('produto/') }}">Editar Produtos</a>
+            </td>
+        </tr>
     </table>
 </div>
 
