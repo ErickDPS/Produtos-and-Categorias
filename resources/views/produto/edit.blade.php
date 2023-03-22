@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('adminlte::page')
 
-        <title>Produto</title>
-    <body>
+@section('content')
         {!! Form::open(['url' => 'produto/' . $produto->id , 'method' =>  'put']) !!}
 
         {!! Form::label('categoria', 'Categoria:') !!}<br>
@@ -23,5 +18,5 @@
         {!! Form::submit('Enviar') !!}<br>
 
         {!! Form::close() !!}
-    </body>
-</html>
+
+        @endsection

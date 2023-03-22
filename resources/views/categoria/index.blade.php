@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Categorias</title>
+@extends('adminlte::page')
+
+@section('content')
 
         <div class="container">
     <a class="btn btn-success btn-lg btn-block rounded-0" href="{{ url('categoria/create') }}">Criar</a>
@@ -33,11 +29,10 @@
         @endforeach
         <tr>
             <td colspan="4">
-                <a class="btn btn-secondary btn-lg btn-block rounded-0" href="{{ url('produto/') }}">Editar Produtos</a>
+                <a class="btn btn-secondary btn-lg btn-block rounded-0" href="{{ url('/produto') }}">Editar Produtos</a>
             </td>
         </tr>
     </table>
 </div>
 
-    </body>
-</html>
+@endsection

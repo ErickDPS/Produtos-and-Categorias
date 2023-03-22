@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('adminlte::page')
 
-        <title>categorias</title>
-    <body>
+@section('content')
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -24,5 +19,5 @@
 
         {!! Form::submit('Enviar') !!}<br>
         {!! Form::close() !!}
-    </body>
-</html>
+
+@endsection
